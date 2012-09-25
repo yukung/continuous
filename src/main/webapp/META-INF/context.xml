@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Used only during development. Production environment that is commented out. -->
+<Context path="/continuous" reloadable="true" />
