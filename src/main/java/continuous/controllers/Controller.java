@@ -3,7 +3,6 @@ package continuous.controllers;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,9 +17,6 @@ public abstract class Controller {
 	
 	/** JSPファイルのプレフィックス */
 	private static final String PREFIX_VIEW = "/WEB-INF/view/";
-	
-	/** サーブレットインスタンス */
-	protected HttpServlet servlet = null;
 	
 	/** リダイレクトかフォワードか（true の場合はリダイレクトする） */
 	public boolean isRedirect;
@@ -40,24 +36,6 @@ public abstract class Controller {
 	 */
 	public abstract String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException,
 			IOException;
-	
-	/**
-	 * サーブレットのインスタンスを返します.
-	 * 
-	 * @return サーブレットインスタンス
-	 */
-	public HttpServlet getServlet() {
-		return (servlet);
-	}
-	
-	/**
-	 * サーブレットのインスタンスを設定します.
-	 * 
-	 * @param servlet サーブレットインスタンス
-	 */
-	public void setServlet(final HttpServlet servlet) {
-		this.servlet = servlet;
-	}
 	
 	/**
 	 * 遷移先のJSPのパスを返します.

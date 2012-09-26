@@ -64,7 +64,7 @@ public class DispatcherServlet extends HttpServlet {
 	 * @throws ServletException 
 	 * @since TODO
 	 */
-	private Controller createController(String controllerPath) throws ServletException {
+	private synchronized Controller createController(String controllerPath) throws ServletException {
 		String controllerName = routes.getProperty(controllerPath);
 		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 		Controller controller;
@@ -77,7 +77,6 @@ public class DispatcherServlet extends HttpServlet {
 		} catch (ClassNotFoundException e) {
 			throw new ServletException(e);
 		}
-		controller.setServlet(this);
 		return controller;
 	}
 	
