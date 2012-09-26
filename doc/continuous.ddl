@@ -1,0 +1,29 @@
+DROP TABLE IF EXISTS user;
+CREATE TABLE user(
+	id IDENTITY PRIMARY KEY,
+	name VARCHAR(255) NOT NULL,
+	email VARCHAR(255) NOT NULL,
+	password VARCHAR(255) NOT NULL,
+	about_me VARCHAR NOT NULL,
+	created_at TIMESTAMP NOT NULL,
+	updated_at TIMESTAMP NOT NULL
+);
+
+DROP TABLE IF EXISTS achivement;
+CREATE TABLE achivement(
+	id IDENTITY PRIMARY KEY,
+	user_id BIGINT NOT NULL,
+	name VARCHAR(255) NOT NULL,
+	created_at TIMESTAMP NOT NULL,
+	updated_at TIMESTAMP NOT NULL
+);
+
+DROP TABLE IF EXISTS practice;
+CREATE TABLE practice(
+	id IDENTITY PRIMARY KEY,
+	user_id BIGINT NOT NULL,
+	achivement_id BIGINT NOT NULL,
+	practiced_on DATE NOT NULL,
+	created_at TIMESTAMP NOT NULL,
+	updated_at TIMESTAMP NOT NULL
+);
