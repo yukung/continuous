@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 public abstract class Controller {
 	
 	/** JSPファイルのプレフィックス */
-	private static String PREFIX_VIEW = "/WEB-INF/view/";
+	private static final String PREFIX_VIEW = "/WEB-INF/view/";
 	
 	/** サーブレットインスタンス */
 	protected HttpServlet servlet = null;
