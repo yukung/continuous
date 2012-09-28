@@ -1,9 +1,6 @@
 package continuous.controllers;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -14,12 +11,13 @@ public class IndexController extends Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException,
 			IOException {
-		List<String> messages = new ArrayList<String>(Arrays.asList(new String[] {
-			"ほげほげ",
-			"ふがふが",
-			"あばばばば"
-		}));
-		request.setAttribute("msgs", messages);
+		// ログインユーザ取得して、名前をセッションスコープに詰める
+		
+		// ログインユーザから、そのユーザのdone情報を取得する
+		
+		// カレンダー表示用のDTOに詰めて、requestスコープに詰める
+		
+		// ホーム画面にフォワード
 		return forwardPath("login.jsp");
 	}
 	

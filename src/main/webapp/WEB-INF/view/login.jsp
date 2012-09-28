@@ -12,9 +12,7 @@
 	</header>
 	<nav></nav>
 	<article>
-		<c:forEach var="msg" items="${msgs}" varStatus="status">
-			<p><c:out value="${status.index}"/>:<c:out value="${msg}"/></p>
-		</c:forEach>
+		<p><c:out value="${user}"></c:out></p>
 	</article>
 	<footer></footer>
 </body>
