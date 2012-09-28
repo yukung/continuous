@@ -139,9 +139,17 @@ DB設計
 --------------------------
 
 * Twitter Bootstrap
+* Persist
 
 URI設計
 =======
+
+|HTTPメソッド|URI|画面|
+|------------|---|----|
+|GET|/continous/index|Home画面|
+|POST|/continous/done|目標達成|
+|GET|/continous/${username}|ユーザ情報画面|
+|POST|/continous/${username}/update|ユーザ情報更新|
 
 API設計
 =======
