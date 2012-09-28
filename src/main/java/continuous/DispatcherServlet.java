@@ -22,9 +22,6 @@ public class DispatcherServlet extends HttpServlet {
 	/** コントローラクラスのパッケージプレフィックス */
 	private static final String CONTROLLER_PACKAGE_PREFIX = "continuous.controllers.";
 	
-	/** デフォルト設定ファイル */
-	private static final String DEFAULT_CONFIG = "/WEB-INF/routes.properties";
-	
 	/** URL マッピング設定 */
 	private static Properties routes = new Properties();
 	
