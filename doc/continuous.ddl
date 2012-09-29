@@ -9,8 +9,8 @@ CREATE TABLE user(
 	updated_at TIMESTAMP NOT NULL
 );
 
-DROP TABLE IF EXISTS achivement;
-CREATE TABLE achivement(
+DROP TABLE IF EXISTS achievement;
+CREATE TABLE achievement(
 	id IDENTITY PRIMARY KEY,
 	user_id BIGINT NOT NULL,
 	name VARCHAR(255) NOT NULL,
