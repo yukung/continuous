@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS practices;
 CREATE TABLE practices(
 	id IDENTITY PRIMARY KEY,
 	user_id BIGINT NOT NULL,
-	achivement_id BIGINT NOT NULL,
+	achievement_id BIGINT NOT NULL,
 	practiced_on DATE NOT NULL,
 	created_at TIMESTAMP NOT NULL,
 	updated_at TIMESTAMP NOT NULL
