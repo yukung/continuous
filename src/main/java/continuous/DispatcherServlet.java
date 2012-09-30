@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import continuous.controllers.Controller;
+import continuous.controller.Controller;
 
 /**
  * リクエスト及びレスポンスの制御を司るコントローラサーブレットです。
@@ -20,7 +20,7 @@ import continuous.controllers.Controller;
 public class DispatcherServlet extends HttpServlet {
 	
 	/** コントローラクラスのパッケージプレフィックス */
-	private static final String CONTROLLER_PACKAGE_PREFIX = "continuous.controllers.";
+	private static final String CONTROLLER_PACKAGE_PREFIX = "continuous.controller.";
 	
 	/** URL マッピング設定 */
 	private static Properties routes = new Properties();

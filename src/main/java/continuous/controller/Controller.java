@@ -1,4 +1,4 @@
-package continuous.controllers;
+package continuous.controller;
 
 import java.io.IOException;
 
