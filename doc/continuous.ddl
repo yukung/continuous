@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS user;
-CREATE TABLE user(
+DROP TABLE IF EXISTS users;
+CREATE TABLE users(
 	id IDENTITY PRIMARY KEY,
 	name VARCHAR(255) NOT NULL,
 	email VARCHAR(255) NOT NULL,
@@ -9,8 +9,8 @@ CREATE TABLE user(
 	updated_at TIMESTAMP NOT NULL
 );
 
-DROP TABLE IF EXISTS achievement;
-CREATE TABLE achievement(
+DROP TABLE IF EXISTS achievements;
+CREATE TABLE achievements(
 	id IDENTITY PRIMARY KEY,
 	user_id BIGINT NOT NULL,
 	name VARCHAR(255) NOT NULL,
@@ -18,8 +18,8 @@ CREATE TABLE achievement(
 	updated_at TIMESTAMP NOT NULL
 );
 
-DROP TABLE IF EXISTS practice;
-CREATE TABLE practice(
+DROP TABLE IF EXISTS practices;
+CREATE TABLE practices(
 	id IDENTITY PRIMARY KEY,
 	user_id BIGINT NOT NULL,
 	achivement_id BIGINT NOT NULL,
