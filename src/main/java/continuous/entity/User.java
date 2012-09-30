@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public class User {
 	
-	private long id;
+	private Long id;
 	
 	private String name;
 	
@@ -36,7 +36,7 @@ public class User {
 		return email;
 	}
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 	
@@ -64,7 +64,7 @@ public class User {
 		this.email = email;
 	}
 	
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	

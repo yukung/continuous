@@ -9,9 +9,9 @@ import java.util.Date;
  */
 public class Achievement {
 	
-	private long id;
+	private Long id;
 	
-	private long userId;
+	private Long userId;
 	
 	private String name;
 	
@@ -24,7 +24,7 @@ public class Achievement {
 		return createdAt;
 	}
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 	
@@ -36,7 +36,7 @@ public class Achievement {
 		return updatedAt;
 	}
 	
-	public long getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 	
@@ -44,7 +44,7 @@ public class Achievement {
 		this.createdAt = createdAt;
 	}
 	
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
@@ -56,7 +56,7 @@ public class Achievement {
 		this.updatedAt = updatedAt;
 	}
 	
-	public void setUserId(long userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 	

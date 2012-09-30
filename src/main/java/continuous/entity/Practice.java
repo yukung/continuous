@@ -9,11 +9,11 @@ import java.util.Date;
  */
 public class Practice {
 	
-	private long id;
+	private Long id;
 	
-	private long userId;
+	private Long userId;
 	
-	private long achievementId;
+	private Long achievementId;
 	
 	private Date practicedOn;
 	
@@ -22,7 +22,7 @@ public class Practice {
 	private Date updatedAt;
 	
 	
-	public long getAchievementId() {
+	public Long getAchievementId() {
 		return achievementId;
 	}
 	
@@ -30,7 +30,7 @@ public class Practice {
 		return createdAt;
 	}
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 	
@@ -42,11 +42,11 @@ public class Practice {
 		return updatedAt;
 	}
 	
-	public long getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 	
-	public void setAchievementId(long achievementId) {
+	public void setAchievementId(Long achievementId) {
 		this.achievementId = achievementId;
 	}
 	
@@ -54,7 +54,7 @@ public class Practice {
 		this.createdAt = createdAt;
 	}
 	
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
@@ -66,7 +66,7 @@ public class Practice {
 		this.updatedAt = updatedAt;
 	}
 	
-	public void setUserId(long userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 	
