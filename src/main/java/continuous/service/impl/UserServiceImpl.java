@@ -10,12 +10,14 @@ public class UserServiceImpl implements UserService {
 	
 	
 	public UserServiceImpl(UserDao userDao) {
+		// TODO とりあえずDIは使わないで作るので、DAOファクトリクラスを作って設定する感じか
+		// TODO ファクトリクラス導入したら、引数のDAOは要らなくて、ファクトリクラスから設定
 		this.userDao = userDao;
 	}
 	
 	@Override
 	public User findByUserName(String name) {
-		return null;
+		return userDao.selectByUserName(name);
 	}
 	
 }

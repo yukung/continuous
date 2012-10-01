@@ -40,14 +40,15 @@ public class UserServiceTest {
 		context.checking(new Expectations() {
 			
 			{
-				allowing(mock).selectById(1L);
+				allowing(mock).selectByUserName("testuser1");
 				User user = new User();
 				user.setId(1L);
-				user.setName("testuser");
+				user.setName("testuser1");
 				will(returnValue(user));
 			}
 		});
-		assertThat(service.findByUserName("testuser").getId(), is(1L));
+		assertThat(service.findByUserName("testuser1").getId(), is(1L));
+		assertThat(service.findByUserName("testuser1").getName(), is("testuser1"));
 	}
 	
 }

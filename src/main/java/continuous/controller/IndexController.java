@@ -6,7 +6,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import continuous.service.UserService;
+
 public class IndexController extends Controller {
+	
+	private UserService userService;
+	
 	
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException,

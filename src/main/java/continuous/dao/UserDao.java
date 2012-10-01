@@ -19,5 +19,7 @@ public interface UserDao {
 	
 	List<User> selectByIds(List<Long> ids);
 	
+	User selectByUserName(String name);
+	
 	void update(User user);
 }
