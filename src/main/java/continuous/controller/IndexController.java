@@ -12,7 +12,10 @@ public class IndexController extends Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException,
 			IOException {
 		// ログインユーザ取得して、名前をセッションスコープに詰める
-		
+		String username = request.getRemoteUser();
+		if (username == null) {
+			throw new ServletException("User has not login.");
+		}
 		// ログインユーザから、そのユーザのdone情報を取得する
 		
 		// カレンダー表示用のDTOに詰めて、requestスコープに詰める
@@ -20,5 +23,4 @@ public class IndexController extends Controller {
 		// ホーム画面にフォワード
 		return forwardPath("login.jsp");
 	}
-	
 }
