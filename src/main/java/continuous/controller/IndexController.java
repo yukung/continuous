@@ -7,11 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import continuous.service.UserService;
+import continuous.service.impl.UserServiceImpl;
 
 public class IndexController extends Controller {
-	
-	private UserService userService;
-	
 	
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException,
@@ -22,7 +20,7 @@ public class IndexController extends Controller {
 			throw new ServletException("User has not login.");
 		}
 		// ログインユーザから、そのユーザのdone情報を取得する
-		
+		UserService userService = new UserServiceImpl();
 		// カレンダー表示用のDTOに詰めて、requestスコープに詰める
 		
 		// ホーム画面にフォワード

@@ -1,6 +1,6 @@
 package continuous.service;
 
-import continuous.entity.User;
+import continuous.dto.IndexDto;
 
 /**
  * ユーザ情報サービス
@@ -9,5 +9,12 @@ import continuous.entity.User;
  */
 public interface UserService {
 	
-	User findByUserName(String name);
+	/**
+	 * ユーザーの継続状況を取得する.
+	 * 
+	 * 
+	 * @param username ユーザ名
+	 * @return ユーザーの継続状況
+	 */
+	IndexDto getStatus(String username);
 }

@@ -2,7 +2,10 @@ package continuous.service;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
+import continuous.dao.AchievementDao;
+import continuous.dao.PracticeDao;
 import continuous.dao.UserDao;
+import continuous.entity.Achievement;
 import continuous.entity.User;
 import continuous.service.impl.UserServiceImpl;
 
@@ -22,13 +25,18 @@ public class UserServiceTest {
 	
 	private UserService service;
 	
-	private UserDao mock;
+	private UserDao userDaoMock;
+	
+	private AchievementDao achievementDaoMock;
+	
+	private PracticeDao prcticeDaoMock;
 	
 	
 	@Before
 	public void setUp() throws Exception {
-		mock = context.mock(UserDao.class);
-		service = new UserServiceImpl(mock);
+		userDaoMock = context.mock(UserDao.class);
+		achievementDaoMock = context.mock(AchievementDao.class);
+		service = new UserServiceImpl();
 	}
 	
 	@After
@@ -37,18 +45,28 @@ public class UserServiceTest {
 	
 	@Test
 	public void testFindByUserName() {
+		// モックでテスト
+		final long userId = 1L;
 		context.checking(new Expectations() {
 			
 			{
-				allowing(mock).selectByUserName("testuser1");
+				allowing(userDaoMock).selectByUserName("testuser1");
 				User user = new User();
-				user.setId(1L);
+				user.setId(userId);
 				user.setName("testuser1");
 				will(returnValue(user));
 			}
+			{
+				allowing(achievementDaoMock).selectByUserId(userId);
+				Achievement achievement = new Achievement();
+				achievement.setId(1L);
+				achievement.setUserId(userId);
+				achievement.setName("目標だぜ");
+				will(returnValue(achievement));
+			}
 		});
-		assertThat(service.findByUserName("testuser1").getId(), is(1L));
-		assertThat(service.findByUserName("testuser1").getName(), is("testuser1"));
+		assertThat(service.getStatus("testuser1"), is(notNullValue()));
+		assertThat(service.getStatus("testuser1").getUser().getId(), is(1L));
 	}
 	
 }

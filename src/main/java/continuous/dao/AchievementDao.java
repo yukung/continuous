@@ -19,5 +19,7 @@ public interface AchievementDao {
 	
 	List<Achievement> selectByIds(List<Long> ids);
 	
+	Achievement selectByUserId(Long userId);
+	
 	void update(Achievement achievement);
 }
