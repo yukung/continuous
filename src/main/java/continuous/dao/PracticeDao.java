@@ -1,5 +1,6 @@
 package continuous.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import continuous.entity.Practice;
@@ -18,6 +19,8 @@ public interface PracticeDao {
 	Practice selectById(Long id);
 	
 	List<Practice> selectByIds(List<Long> ids);
+	
+	List<Practice> selectRangeToPracticedOn(Date from, Date to);
 	
 	void update(Practice practice);
 }
