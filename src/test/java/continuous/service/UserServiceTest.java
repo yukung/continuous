@@ -65,8 +65,8 @@ public class UserServiceTest {
 				will(returnValue(achievement));
 			}
 		});
-		assertThat(service.getStatus("testuser1"), is(notNullValue()));
-		assertThat(service.getStatus("testuser1").getUser().getId(), is(1L));
+		assertThat(service.getSummary("testuser1"), is(notNullValue()));
+		assertThat(service.getSummary("testuser1").getUser().getId(), is(1L));
 	}
 	
 }

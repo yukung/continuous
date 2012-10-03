@@ -16,5 +16,5 @@ public interface UserService {
 	 * @param username ユーザ名
 	 * @return ユーザーの継続状況
 	 */
-	IndexDto getStatus(String username);
+	IndexDto getSummary(String username);
 }

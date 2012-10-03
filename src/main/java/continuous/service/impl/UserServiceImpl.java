@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public IndexDto getStatus(String username) {
+	public IndexDto getSummary(String username) {
 		User user = userDao.selectByUserName(username);
 		Achievement achievement = achievementDao.selectByUserId(user.getId());
 		
