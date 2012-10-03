@@ -1,10 +1,9 @@
 package continuous.service.impl;
 
-import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import continuous.dao.AchievementDao;
 import continuous.dao.PracticeDao;
@@ -14,6 +13,8 @@ import continuous.entity.Achievement;
 import continuous.entity.Practice;
 import continuous.entity.User;
 import continuous.service.UserService;
+import continuous.util.DateUtils;
+import continuous.util.DateUtils.Period;
 
 public class UserServiceImpl implements UserService {
 	
@@ -39,24 +40,19 @@ public class UserServiceImpl implements UserService {
 		User user = userDao.selectByUserName(username);
 		Achievement achievement = achievementDao.selectByUserId(user.getId());
 		
-		// TODO プライベートメソッド or ユーティリティクラスとして実装
-		Calendar cal = Calendar.getInstance();
-		int year = cal.get(Calendar.YEAR);
-		int month = cal.get(Calendar.MONTH) + 1;
-		int actualMinimum = cal.getActualMinimum(Calendar.DATE);
-		cal.clear();
-		cal.set(year, month, actualMinimum);
-		Date from = cal.getTime();
+		Period currentPeriod = DateUtils.currentPeriod();
 		
-		Date to = Calendar.getInstance().getTime();
-		
-		List<Practice> practicedList = practiceDao.selectRangeToPracticedOn(from, to);
-		// TODO List 回して PracticedOn をキーにして true を入れる
-		Map<Date, Boolean> map = new HashMap<Date, Boolean>();
+		List<Practice> practicedList =
+				practiceDao.selectRangeToPracticedOn(currentPeriod.getFrom(), currentPeriod.getTo());
+		Map<Date, Boolean> map = new TreeMap<Date, Boolean>();
+		for (Practice practice : practicedList) {
+			map.put(practice.getPracticedOn(), true);
+		}
 		IndexDto indexDto = new IndexDto();
 		indexDto.setUser(user);
 		indexDto.setAchievement(achievement);
-		return null;
+		indexDto.setStatus(map);
+		return indexDto;
 	}
 	
 }
