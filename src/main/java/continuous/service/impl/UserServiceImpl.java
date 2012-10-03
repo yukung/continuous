@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import continuous.dao.AchievementDao;
+import continuous.dao.DaoFactory;
 import continuous.dao.PracticeDao;
 import continuous.dao.UserDao;
 import continuous.dto.IndexDto;
@@ -32,7 +33,9 @@ public class UserServiceImpl implements UserService {
 		// https://github.com/yukung/tasklet/blob/master/src/main/java/org/yukung/tasklet/factory/DaoFactory.java
 		// の各DAOを返すメソッドを抽象クラスかインタフェースを返すようなメソッド定義にして一つにまとめて、
 		// 引数で生成するインスタンスを判断するようにする。
-		userDao = null;
+		userDao = DaoFactory.create(UserDao.class);
+//		achievementDao = new AchievementDaoImpl();
+//		practiceDao = new PracticeDaoImpl();
 	}
 	
 	@Override
