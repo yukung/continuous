@@ -32,6 +32,7 @@ public class UserServiceImpl implements UserService {
 		// https://github.com/yukung/tasklet/blob/master/src/main/java/org/yukung/tasklet/factory/DaoFactory.java
 		// の各DAOを返すメソッドを抽象クラスかインタフェースを返すようなメソッド定義にして一つにまとめて、
 		// 引数で生成するインスタンスを判断するようにする。
+		// TODO ふもさんのエントリ→ http://npnl.hatenablog.jp/entry/2012/07/06/004311 にやりたいことがまさに載ってる(*´Д`)ﾊｧﾊｧ
 	}
 	
 	@Override
