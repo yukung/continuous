@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
 	private PracticeDao practiceDao;
 	
 	
-	public UserServiceImpl() {
+	public UserServiceImpl(UserDao userDao, AchievementDao achievementDao, PracticeDao practiceDao) {
 		// TODO とりあえずDIは使わないで作るので、DAOファクトリクラスを作って設定する感じか
 		// TODO ファクトリクラス導入したら、引数のDAOは要らなくて、ファクトリクラスから設定
 		// this.userDao = DaoFactory.create(daoName); みたいな
@@ -33,6 +33,9 @@ public class UserServiceImpl implements UserService {
 		// の各DAOを返すメソッドを抽象クラスかインタフェースを返すようなメソッド定義にして一つにまとめて、
 		// 引数で生成するインスタンスを判断するようにする。
 		// TODO ふもさんのエントリ→ http://npnl.hatenablog.jp/entry/2012/07/06/004311 にやりたいことがまさに載ってる(*´Д`)ﾊｧﾊｧ
+		this.userDao = userDao;
+		this.achievementDao = achievementDao;
+		this.practiceDao = practiceDao;
 	}
 	
 	@Override
