@@ -6,8 +6,12 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import continuous.dao.AchievementDao;
+import continuous.dao.DaoFactory;
 import continuous.dao.PracticeDao;
 import continuous.dao.UserDao;
+import continuous.dao.impl.AchievementDaoImpl;
+import continuous.dao.impl.PracticeDaoImpl;
+import continuous.dao.impl.UserDaoImpl;
 import continuous.dto.SummaryDto;
 import continuous.entity.Achievement;
 import continuous.entity.Practice;
@@ -33,6 +37,9 @@ public class UserServiceImpl implements UserService {
 		// の各DAOを返すメソッドを抽象クラスかインタフェースを返すようなメソッド定義にして一つにまとめて、
 		// 引数で生成するインスタンスを判断するようにする。
 		// TODO ふもさんのエントリ→ http://npnl.hatenablog.jp/entry/2012/07/06/004311 にやりたいことがまさに載ってる(*´Д`)ﾊｧﾊｧ
+		userDao = DaoFactory.create(UserDaoImpl.class);
+		achievementDao = DaoFactory.create(AchievementDaoImpl.class);
+		practiceDao = DaoFactory.create(PracticeDaoImpl.class);
 	}
 	
 	@Override
