@@ -6,7 +6,7 @@ import java.util.Map;
 import continuous.entity.Achievement;
 import continuous.entity.User;
 
-public class IndexDto {
+public class SummaryDto {
 	
 	private User user;
 	

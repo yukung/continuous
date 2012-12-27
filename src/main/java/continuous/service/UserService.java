@@ -1,6 +1,6 @@
 package continuous.service;
 
-import continuous.dto.IndexDto;
+import continuous.dto.SummaryDto;
 
 /**
  * ユーザ情報サービス
@@ -16,5 +16,5 @@ public interface UserService {
 	 * @param username ユーザ名
 	 * @return ユーザーの継続状況
 	 */
-	IndexDto getSummary(String username);
+	SummaryDto getSummary(String username);
 }

@@ -8,7 +8,7 @@ import java.util.TreeMap;
 import continuous.dao.AchievementDao;
 import continuous.dao.PracticeDao;
 import continuous.dao.UserDao;
-import continuous.dto.IndexDto;
+import continuous.dto.SummaryDto;
 import continuous.entity.Achievement;
 import continuous.entity.Practice;
 import continuous.entity.User;
@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
 	private PracticeDao practiceDao;
 	
 	
-	public UserServiceImpl(UserDao userDao, AchievementDao achievementDao, PracticeDao practiceDao) {
+	public UserServiceImpl() {
 		// TODO とりあえずDIは使わないで作るので、DAOファクトリクラスを作って設定する感じか
 		// TODO ファクトリクラス導入したら、引数のDAOは要らなくて、ファクトリクラスから設定
 		// this.userDao = DaoFactory.create(daoName); みたいな
@@ -33,13 +33,10 @@ public class UserServiceImpl implements UserService {
 		// の各DAOを返すメソッドを抽象クラスかインタフェースを返すようなメソッド定義にして一つにまとめて、
 		// 引数で生成するインスタンスを判断するようにする。
 		// TODO ふもさんのエントリ→ http://npnl.hatenablog.jp/entry/2012/07/06/004311 にやりたいことがまさに載ってる(*´Д`)ﾊｧﾊｧ
-		this.userDao = userDao;
-		this.achievementDao = achievementDao;
-		this.practiceDao = practiceDao;
 	}
 	
 	@Override
-	public IndexDto getSummary(String username) {
+	public SummaryDto getSummary(String username) {
 		User user = userDao.selectByUserName(username);
 		Achievement achievement = achievementDao.selectByUserId(user.getId());
 		
@@ -47,15 +44,15 @@ public class UserServiceImpl implements UserService {
 		
 		List<Practice> practicedList =
 				practiceDao.selectRangeToPracticedOn(currentPeriod.getFrom(), currentPeriod.getTo());
-		Map<Date, Boolean> map = new TreeMap<Date, Boolean>();
+		Map<Date, Boolean> statusMap = new TreeMap<Date, Boolean>();
 		for (Practice practice : practicedList) {
-			map.put(practice.getPracticedOn(), true);
+			statusMap.put(practice.getPracticedOn(), true);
 		}
-		IndexDto indexDto = new IndexDto();
-		indexDto.setUser(user);
-		indexDto.setAchievement(achievement);
-		indexDto.setStatus(map);
-		return indexDto;
+		SummaryDto summaryDto = new SummaryDto();
+		summaryDto.setUser(user);
+		summaryDto.setAchievement(achievement);
+		summaryDto.setStatus(statusMap);
+		return summaryDto;
 	}
 	
 }
