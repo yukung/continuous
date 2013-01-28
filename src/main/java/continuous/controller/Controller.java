@@ -1,10 +1,9 @@
 package continuous.controller;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import continuous.ApplicationRuntimeException;
 
 /**
  * コントローラの基底クラスです. 一つのURLに対して一つのコントローラが対応します.
@@ -31,11 +30,10 @@ public abstract class Controller {
 	 * @param request HTTPリクエスト
 	 * @param response HTTPレスポンス
 	 * @return 遷移先のパス
-	 * @throws ServletException
-	 * @throws IOException
+	 * @throws ApplicationRuntimeException
 	 */
-	public abstract String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException,
-			IOException;
+	public abstract String execute(HttpServletRequest request, HttpServletResponse response)
+			throws ApplicationRuntimeException;
 	
 	/**
 	 * 遷移先のJSPのパスを返します.
