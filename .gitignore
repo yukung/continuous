@@ -2,3 +2,4 @@
 target/*
 *.jar
 src/main/webapp/WEB-INF/classes/*
+/target
