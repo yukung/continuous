@@ -5,7 +5,7 @@ import java.util.List;
 import continuous.entity.User;
 
 /**
- * データソースからユーザ関連の情報を取得するクラスです.
+ * データソースからユーザの情報を取得するクラスです.
  * 
  * @since 0.0.1 for yukung
  * @version $Id$
