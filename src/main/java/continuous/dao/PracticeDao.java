@@ -19,7 +19,7 @@ public interface PracticeDao {
 	 * @param Practice 実績情報
 	 * @since 0.0.1
 	 */
-	public void delete(Practice Practice);
+	void delete(Practice Practice);
 	
 	/**
 	 * 指定したIDで実績情報を取得します.
@@ -28,7 +28,7 @@ public interface PracticeDao {
 	 * @return 実績情報
 	 * @since 0.0.1
 	 */
-	public Practice find(long id);
+	Practice find(long id);
 	
 	/**
 	 * 実績情報を全て取得します.
@@ -36,7 +36,7 @@ public interface PracticeDao {
 	 * @return 全ての実績情報
 	 * @since 0.0.1
 	 */
-	public List<Practice> findAll();
+	List<Practice> findAll();
 	
 	/**
 	 * 実績情報を作成します.
@@ -44,7 +44,7 @@ public interface PracticeDao {
 	 * @param Practice 実績情報
 	 * @since 0.0.1
 	 */
-	public void insert(Practice Practice);
+	void insert(Practice Practice);
 	
 	/**
 	 * 実績情報を更新します.
@@ -52,5 +52,5 @@ public interface PracticeDao {
 	 * @param Practice 実績情報
 	 * @since 0.0.1
 	 */
-	public void update(Practice Practice);
+	void update(Practice Practice);
 }

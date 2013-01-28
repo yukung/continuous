@@ -19,7 +19,7 @@ public interface AchievementDao {
 	 * @param Achievement 目標情報
 	 * @since 0.0.1
 	 */
-	public void delete(Achievement Achievement);
+	void delete(Achievement Achievement);
 	
 	/**
 	 * 指定したIDで目標情報を取得します.
@@ -28,7 +28,7 @@ public interface AchievementDao {
 	 * @return 目標情報
 	 * @since 0.0.1
 	 */
-	public Achievement find(long id);
+	Achievement find(long id);
 	
 	/**
 	 * 目標情報を全て取得します.
@@ -36,7 +36,7 @@ public interface AchievementDao {
 	 * @return 全ての目標情報
 	 * @since 0.0.1
 	 */
-	public List<Achievement> findAll();
+	List<Achievement> findAll();
 	
 	/**
 	 * 目標情報を作成します.
@@ -44,7 +44,7 @@ public interface AchievementDao {
 	 * @param Achievement 目標情報
 	 * @since 0.0.1
 	 */
-	public void insert(Achievement Achievement);
+	void insert(Achievement Achievement);
 	
 	/**
 	 * 目標情報を更新します.
@@ -52,5 +52,5 @@ public interface AchievementDao {
 	 * @param Achievement 目標情報
 	 * @since 0.0.1
 	 */
-	public void update(Achievement Achievement);
+	void update(Achievement Achievement);
 }
