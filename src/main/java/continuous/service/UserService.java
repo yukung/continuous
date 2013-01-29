@@ -21,6 +21,15 @@ public interface UserService {
 	User find(long userId);
 	
 	/**
+	 * ユーザ情報を削除します.
+	 *
+	 * @param user ユーザ
+	 * @return 削除結果
+	 * @since 0.0.1
+	 */
+	boolean remove(User user);
+	
+	/**
 	 * ユーザを新規作成します.
 	 *
 	 * @param user ユーザ
@@ -28,4 +37,14 @@ public interface UserService {
 	 * @since 0.0.1
 	 */
 	long store(User user);
+	
+	/**
+	 * ユーザ情報を更新します.
+	 *
+	 * @param user ユーザ
+	 * @return 更新結果
+	 * @since 0.0.1
+	 */
+	boolean update(User user);
+	
 }

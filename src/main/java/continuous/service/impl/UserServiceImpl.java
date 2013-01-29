@@ -31,8 +31,18 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
+	public boolean remove(User user) {
+		return dao.delete(user);
+	}
+	
+	@Override
 	public long store(User user) {
 		return dao.insert(user);
+	}
+	
+	@Override
+	public boolean update(User user) {
+		return dao.update(user);
 	}
 	
 }

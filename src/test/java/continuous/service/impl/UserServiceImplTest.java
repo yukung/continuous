@@ -51,17 +51,35 @@ public class UserServiceImplTest {
 		assertThat(service.find(0L), is(user));
 	}
 	
+	/**
+	 * TODO for yukung
+	 *
+	 * @throws Exception 例外が発生した場合
+	 */
 	@Test
-	public void testSave() {
+	public void testRemove() throws Exception {
+		final User user = new User();
+		user.setId(1L);
+		context.checking(new Expectations() {
+			
+			{
+				oneOf(mock).delete(user);
+				will(returnValue(true));
+			}
+		});
+		assertThat(service.remove(user), is(true));
+	}
+	
+	@Test
+	public void testStore() {
 		final User user = new User();
 		user.setName("Test User1");
-		user.setEmail("test@continuos.com");
+		user.setEmail("test@continuous.com");
 		user.setPassword("password");
 		user.setAboutMe("テストユーザーです。");
 		Date date = new Date();
 		user.setCreatedAt(date);
 		user.setUpdatedAt(date);
-		
 		context.checking(new Expectations() {
 			
 			{
@@ -70,5 +88,20 @@ public class UserServiceImplTest {
 			}
 		});
 		assertThat(service.store(user), is(1L));
+	}
+	
+	@Test
+	public void testUpdate() throws Exception {
+		final User user = new User();
+		user.setId(1L);
+		user.setEmail("updated@continuous.com");
+		context.checking(new Expectations() {
+			
+			{
+				oneOf(mock).update(user);
+				will(returnValue(true));
+			}
+		});
+		assertThat(service.update(user), is(true));
 	}
 }

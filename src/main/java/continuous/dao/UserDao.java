@@ -17,9 +17,10 @@ public interface UserDao {
 	 * ユーザ情報を削除します.
 	 *
 	 * @param user ユーザ情報
+	 * @return 削除結果
 	 * @since 0.0.1
 	 */
-	void delete(User user);
+	boolean delete(User user);
 	
 	/**
 	 * 指定したIDでユーザ情報を取得します.
@@ -51,7 +52,8 @@ public interface UserDao {
 	 * ユーザ情報を更新します.
 	 *
 	 * @param user ユーザ情報
+	 * @return 更新結果
 	 * @since 0.0.1
 	 */
-	void update(User user);
+	boolean update(User user);
 }
