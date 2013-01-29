@@ -51,11 +51,6 @@ public class UserServiceImplTest {
 		assertThat(service.find(0L), is(user));
 	}
 	
-	/**
-	 * TODO for yukung
-	 *
-	 * @throws Exception 例外が発生した場合
-	 */
 	@Test
 	public void testRemove() throws Exception {
 		final User user = new User();
