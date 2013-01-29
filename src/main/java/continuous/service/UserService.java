@@ -14,11 +14,11 @@ public interface UserService {
 	/**
 	 * 指定したユーザの情報を取得します.
 	 *
-	 * @param userId ユーザID
+	 * @param id ユーザID
 	 * @return ユーザ情報
 	 * @since 0.0.1
 	 */
-	User find(long userId);
+	User find(long id);
 	
 	/**
 	 * ユーザ情報を削除します.
