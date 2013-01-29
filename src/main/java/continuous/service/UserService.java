@@ -19,4 +19,13 @@ public interface UserService {
 	 * @since 0.0.1
 	 */
 	User find(long userId);
+	
+	/**
+	 * ユーザを新規作成します.
+	 *
+	 * @param user ユーザ
+	 * @return ユーザID
+	 * @since 0.0.1
+	 */
+	long store(User user);
 }

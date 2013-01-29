@@ -30,4 +30,9 @@ public class UserServiceImpl implements UserService {
 		return dao.find(userId);
 	}
 	
+	@Override
+	public long store(User user) {
+		return dao.insert(user);
+	}
+	
 }

@@ -42,9 +42,10 @@ public interface UserDao {
 	 * ユーザ情報を作成します.
 	 *
 	 * @param user ユーザ情報
+	 * @return ユーザID
 	 * @since 0.0.1
 	 */
-	void insert(User user);
+	long insert(User user);
 	
 	/**
 	 * ユーザ情報を更新します.
