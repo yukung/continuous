@@ -39,6 +39,14 @@ public interface AchievementDao {
 	List<Achievement> findAll();
 	
 	/**
+	 * ユーザIDから目標情報を取得します.
+	 *
+	 * @param userId ユーザID
+	 * @since 0.0.1
+	 */
+	void findByUserId(long userId);
+	
+	/**
 	 * 目標情報を作成します.
 	 *
 	 * @param Achievement 目標情報

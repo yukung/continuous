@@ -3,7 +3,7 @@ package continuous.service;
 import continuous.entity.User;
 
 /**
- * ユーザ情報を操作するサービスクラスです.
+ * ユーザ情報を扱うサービスクラスです.
  *
  * @since 0.0.1 for yukung
  * @version $Id$

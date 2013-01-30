@@ -1,5 +1,6 @@
 package continuous.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import continuous.entity.Practice;
@@ -37,6 +38,17 @@ public interface PracticeDao {
 	 * @since 0.0.1
 	 */
 	List<Practice> findAll();
+	
+	/**
+	 * 期間を指定して実績を取得します.
+	 * @param userId ユーザID
+	 * @param from 開始日付
+	 * @param to 終了日付
+	 * @return 実績情報リスト
+	 *
+	 * @since 0.0.1
+	 */
+	List<Practice> findByRange(long userId, Date from, Date to);
 	
 	/**
 	 * 実績情報を作成します.

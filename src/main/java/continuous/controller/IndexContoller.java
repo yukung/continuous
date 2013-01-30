@@ -4,8 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * インデックスページのコントローラです。
- * 
+ * インデックスページのコントローラです.
+ *
  * @since 0.0.1 for yukung
  * @version $Id$
  * @author yukung

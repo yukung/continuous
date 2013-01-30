@@ -1,8 +1,7 @@
 package continuous.service;
 
-
 /**
- * 目標情報を操作するサービスクラスです.
+ * 目標情報を扱うサービスクラスです.
  *
  * @since 0.0.1 for yukung
  * @version $Id$
