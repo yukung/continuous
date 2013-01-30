@@ -42,9 +42,10 @@ public interface AchievementDao {
 	 * ユーザIDから目標情報を取得します.
 	 *
 	 * @param userId ユーザID
+	 * @return 目標情報
 	 * @since 0.0.1
 	 */
-	void findByUserId(long userId);
+	Achievement findByUserId(long userId);
 	
 	/**
 	 * 目標情報を作成します.

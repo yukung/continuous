@@ -1,8 +1,13 @@
 package continuous.service.impl;
 
+import java.util.Date;
+import java.util.List;
+
 import continuous.dao.AchievementDao;
 import continuous.dao.PracticeDao;
 import continuous.dto.IndexDto;
+import continuous.entity.Achievement;
+import continuous.entity.Practice;
 import continuous.service.SummariesService;
 
 /**
@@ -30,7 +35,9 @@ public class SummariesServiceImpl implements SummariesService {
 	
 	@Override
 	public IndexDto summarize(long userId) {
-		return null;
+		Achievement achievement = achievementDao.findByUserId(userId);
+		List<Practice> lists = practiceDao.findByRange(userId, new Date(), new Date());
+		return new IndexDto();
 	}
 	
 }
