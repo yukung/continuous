@@ -12,7 +12,7 @@ import continuous.entity.Achievement;
  * @version $Id$
  * @author yukung
  */
-public class IndexDto {
+public class Summary {
 	
 	private Achievement achievement;
 	

@@ -3,6 +3,7 @@ package continuous.service.impl;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -49,57 +50,55 @@ public class SummariesServiceImplTest {
 	
 	@Test
 	public void testSummarize() throws Exception {
-		final long userId = 1L;
+		// Achievement の戻り値
 		final Achievement achievement = new Achievement();
-		achievement.setId(10L);
+		achievement.setId(100L);
 		achievement.setUserId(1L);
-		achievement.setName("毎日ジョギングする！");
-		Date today = new Date();
-		achievement.setCreatedAt(today);
-		achievement.setUpdatedAt(today);
+		achievement.setName("目標が入っている");
+		Date date = new SimpleDateFormat("yyyy/MM/dd").parse("2013/01/01");
+		achievement.setCreatedAt(date);
+		achievement.setUpdatedAt(date);
 		
+		final long userId = 1L;
+		// AchievementDao のモック定義
 		context.checking(new Expectations() {
 			
-//			{
-//				oneOf(achievementDaoMock).findByUserId(userId);
-//				will(returnValue(achievement));
-//			}
+			{
+				oneOf(achievementDaoMock).findByUserId(userId);
+				will(returnValue(achievement));
+			}
 		});
-		List<Practice> practices = new ArrayList<Practice>();
-		for (int i = 0; i < 31; i++) {
+		
+		// Practice の戻り値
+		List<Practice> list = new ArrayList<Practice>();
+		// 1ヶ月分のデータ作成
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.DATE, calendar.getActualMinimum(Calendar.DATE));
+		calendar.set(Calendar.HOUR_OF_DAY, 0);
+		calendar.clear(Calendar.MINUTE);
+		calendar.clear(Calendar.SECOND);
+//		System.out.println(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(calendar.getTime()));
+		for (int i = 0; i < calendar.getActualMaximum(Calendar.DATE); i++) {
 			Practice practice = new Practice();
-			practice.setId((long) i);
+			practice.setId(Long.valueOf(i * 10000)); // 他のIDと区別しやすいように増やしてるだけ
 			practice.setUserId(userId);
 			practice.setAchievementId(achievement.getId());
 			practice.setPracticedOn((i % 2 == 0) ? new Date() : null);
-			practice.setCreatedAt(new Date());
-			practice.setUpdatedAt(new Date());
-			practices.add(practice);
+			practice.setCreatedAt(calendar.getTime());
+			practice.setUpdatedAt(calendar.getTime());
+			list.add(practice);
+			calendar.add(Calendar.DATE, 1);
 		}
-		final List<Practice> result = Collections.unmodifiableList(practices);
-		Calendar cal = Calendar.getInstance();
-		// 月初
-		cal.set(Calendar.DATE, cal.getActualMinimum(Calendar.DATE));
-		cal.set(Calendar.HOUR_OF_DAY, 0);
-		cal.set(Calendar.MINUTE, 0);
-		cal.set(Calendar.SECOND, 0);
-		final Date from = cal.getTime();
-		// 月末
-		cal.set(Calendar.DATE, cal.getActualMaximum(Calendar.DATE));
-		cal.set(Calendar.HOUR_OF_DAY, 23);
-		cal.set(Calendar.MINUTE, 59);
-		cal.set(Calendar.SECOND, 59);
-		final Date to = cal.getTime();
+		final List<Practice> practices = Collections.unmodifiableList(list);
 		
+		// PracticeDao のモック定義
 		context.checking(new Expectations() {
 			
 			{
 				
-				oneOf(achievementDaoMock).findByUserId(userId);
-				will(returnValue(achievement));
-				// 以下は引数を任意指定する例
-				oneOf(practiceDaoMock).findByRange(with(equal(userId)), with(any(Date.class)), with(any(Date.class)));
-//				will(returnValue(result));
+				oneOf(practiceDaoMock).findByRange(with(equal(userId)), with(equal(achievement.getId())),
+						with(aNonNull(Date.class)), with(aNonNull(Date.class)));
+				will(returnValue(practices));
 			}
 		});
 		

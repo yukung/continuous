@@ -1,6 +1,6 @@
 package continuous.service;
 
-import continuous.dto.IndexDto;
+import continuous.dto.Summary;
 
 /**
  * 実績のサマリーを扱うサービスクラスです.
@@ -18,5 +18,5 @@ public interface SummariesService {
 	 * @return 実績サマリー情報
 	 * @since 0.0.1
 	 */
-	IndexDto summarize(long userId);
+	Summary summarize(long userId);
 }

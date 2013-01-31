@@ -42,13 +42,14 @@ public interface PracticeDao {
 	/**
 	 * 期間を指定して実績を取得します.
 	 * @param userId ユーザID
+	 * @param achievementId 目標ID
 	 * @param from 開始日付
 	 * @param to 終了日付
 	 * @return 実績情報リスト
 	 *
 	 * @since 0.0.1
 	 */
-	List<Practice> findByRange(long userId, Date from, Date to);
+	List<Practice> findByRange(long userId, long achievementId, Date from, Date to);
 	
 	/**
 	 * 実績情報を作成します.
