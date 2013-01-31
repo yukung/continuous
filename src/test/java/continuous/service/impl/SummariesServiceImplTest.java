@@ -12,6 +12,7 @@ import java.util.List;
 
 import continuous.dao.AchievementDao;
 import continuous.dao.PracticeDao;
+import continuous.dto.Summary;
 import continuous.entity.Achievement;
 import continuous.entity.Practice;
 import continuous.service.SummariesService;
@@ -102,6 +103,7 @@ public class SummariesServiceImplTest {
 			}
 		});
 		
-		assertThat(service.summarize(userId), is(notNullValue()));
+		Summary summarize = service.summarize(userId);
+		assertThat(summarize, is(notNullValue(Summary.class)));
 	}
 }
