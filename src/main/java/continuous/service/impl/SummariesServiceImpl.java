@@ -66,28 +66,26 @@ public class SummariesServiceImpl implements SummariesService {
 		return new Summary();
 	}
 	
-	/**
-	 * TODO for A12323
-	 * @param to
-	 * @param from
-	 *
-	 * @param lists
-	 * @return
-	 * @since TODO
-	 */
 	private List<List<Cell>> convert(List<Practice> practices) {
 		// TODO 一旦ベタ書き。ユーティリティに移すかはあとで考える
 		if (practices == null || practices.size() == 0) {
 			return null;
 		}
-		Date firstPracticeDate = practices.get(0).getPracticedOn();
+		Date firstPracticeDate = practices.get(0).getPracticedOn(); // 最初のデータを取って対象月とする
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(firstPracticeDate);
-		int row = 0;
-		int column = calendar.get(Calendar.DAY_OF_WEEK) - 1; // 開始の列
-		Cell[][] matrix = new Cell[6][7];
-		for (int i = 1; i <= calendar.getActualMaximum(Calendar.DATE); i++) {
-			// TODO practice をなめて i と practicedOn が一致したら、 matrix に入れる
+		calendar.set(Calendar.DATE, calendar.getActualMinimum(Calendar.DATE)); // 1日に設定
+		int extraDays = calendar.getActualMaximum(Calendar.DAY_OF_WEEK) - calendar.get(Calendar.DAY_OF_WEEK);
+		int necessaryCellsCount = calendar.getActualMaximum(Calendar.DATE) + extraDays; // 月の日数にカレンダー開始曜日の日数分足す
+		int rows = necessaryCellsCount / calendar.getActualMaximum(Calendar.DAY_OF_WEEK);
+		if (necessaryCellsCount % calendar.getActualMaximum(Calendar.DAY_OF_WEEK) != 0) {
+			// トータル件数が7日で割り切れない場合は、1行増やす
+			++rows;
+		}
+		for (int i = 0; i < rows; i++) { // １ヶ月の週分
+			for (int j = 0; j < calendar.getActualMaximum(Calendar.DAY_OF_WEEK); j++) { // 1週間分
+				// practices を map にして、日付を key にして問い合わせて、見つかったらCellに入れる
+			}
 		}
 		return null;
 	}
