@@ -84,7 +84,7 @@ public class SummariesServiceImplTest {
 			practice.setId(Long.valueOf(i * 10000)); // 他のIDと区別しやすいように増やしてるだけ
 			practice.setUserId(userId);
 			practice.setAchievementId(achievement.getId());
-			practice.setPracticedOn((i % 2 == 0) ? new Date() : null);
+			practice.setPracticedOn((i % 3 == 0) ? calendar.getTime() : null); // 3日おきにやった前提
 			practice.setCreatedAt(calendar.getTime());
 			practice.setUpdatedAt(calendar.getTime());
 			list.add(practice);
@@ -105,5 +105,6 @@ public class SummariesServiceImplTest {
 		
 		Summary summarize = service.summarize(userId);
 		assertThat(summarize, is(notNullValue(Summary.class)));
+		// TODO 中身の Assert
 	}
 }

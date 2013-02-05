@@ -1,8 +1,12 @@
 package continuous.service.impl;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import continuous.ApplicationRuntimeException;
 import continuous.dao.AchievementDao;
@@ -63,13 +67,26 @@ public class SummariesServiceImpl implements SummariesService {
 		List<Practice> entities = practiceDao.findByRange(userId, achievement.getId(), from, to);
 		// TODO サマリー作成ロジック。指針としては、ビュー向けにDTOへ変換するユーティリティをかまして Summary で返す
 		List<List<Cell>> practices = convert(entities);
-		return new Summary();
+		Summary summary = new Summary();
+		summary.setDate(new Date());
+		summary.setAchievement(achievement);
+		summary.setPractices(practices);
+		return summary;
 	}
 	
 	private List<List<Cell>> convert(List<Practice> practices) {
 		// TODO 一旦ベタ書き。ユーティリティに移すかはあとで考える
 		if (practices == null || practices.size() == 0) {
 			return null;
+		}
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		// TODO practices を Map<String, Practice> に変換する
+		Map<String, Practice> map = new HashMap<String, Practice>();
+		for (Practice practice : practices) {
+			Date practicedOn = practice.getPracticedOn();
+			if (practicedOn != null) {
+				map.put(format.format(practicedOn), practice);
+			}
 		}
 		Date firstPracticeDate = practices.get(0).getPracticedOn(); // 最初のデータを取って対象月とする
 		Calendar calendar = Calendar.getInstance();
@@ -82,11 +99,29 @@ public class SummariesServiceImpl implements SummariesService {
 			// トータル件数が7日で割り切れない場合は、1行増やす
 			++rows;
 		}
-		for (int i = 0; i < rows; i++) { // １ヶ月の週分
+		List<List<Cell>> result = new ArrayList<List<Cell>>();
+		int current = 1;
+		loop: for (int i = 0; i < rows; i++) { // １ヶ月の週分
+			List<Cell> list = new ArrayList<Cell>();
 			for (int j = 0; j < calendar.getActualMaximum(Calendar.DAY_OF_WEEK); j++) { // 1週間分
+				if (current == necessaryCellsCount) {
+					break loop;
+				}
 				// practices を map にして、日付を key にして問い合わせて、見つかったらCellに入れる
+				String calendarKey = format.format(calendar.getTime());
+				Practice practice = map.get(calendarKey);
+				if (practice != null) {
+					Cell cell = new Cell();
+					cell.setDate(practice.getPracticedOn());
+					cell.setCarriedOut(true);
+					cell.setDayOfWeek(calendar.get(Calendar.DAY_OF_WEEK));
+					list.add(cell);
+				}
+				calendar.add(Calendar.DATE, 1); // 次の日へ
+				++current;
 			}
+			result.add(list);
 		}
-		return null;
+		return result;
 	}
 }
